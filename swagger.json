@@ -1,0 +1,269 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Rento_Mojo",
+        "description": "Digital Phonebook",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "rentmojo1.herokuapp.com",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/phonebook": {
+            "get": {
+                "tags": [
+                    "phonebook"
+                ],
+                "summary": "Get 10 contacts",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "required": [
+                                "id",
+                                "name",
+                                "caption",
+                                "url"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "uniqueItems": true,
+                                    "example": "1"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "Rishabh Srivastava"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "9653009629"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "srivastava829@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Add a Contact"
+                ],
+                "summary": "Adding a Contact",
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": "Details",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "name",
+                                "phone",
+                                "email"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Rishabh Srivastava"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "9653009629"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "srivastava829@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "required": [
+                                "id"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "example": "10"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/phonebook/{id}": {
+            "get": {
+                "tags": [
+                    "Get contact by email"
+                ],
+                "summary": "Get Email by email as id",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Get contact"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "required": [
+                                "name",
+                                "id",
+                                "phone",
+                                "email"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "uniqueItems": true,
+                                    "example": "1"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "Rishabh Srivastava"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "9653009629"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "srivastava829@gmail.com"
+                                }
+                            
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Update a Contact"
+                ],
+                "summary": "Updating a Contact",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Email Id Used"
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": "Details",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Rishabh Here"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "srivastava829@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Id Not found"
+                    },
+                    "409": {
+                        "description": "Confict"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delete  a Contact"
+                ],
+                "summary": "delete a Contact",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Remove a Contact"
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": "Details",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "uniqueItems": true,
+                                    "example": "1"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "Rishabh Srivastava"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "9653009629"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "srivastava829@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Id Not found"
+                    },
+                    "409": {
+                        "description": "Confict"
+                    }
+                }
+            }
+        }
+    }
+}

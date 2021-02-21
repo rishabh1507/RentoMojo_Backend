@@ -1,0 +1,19 @@
+{
+  "name": "rent_mojo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rishabh srivastava",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.17",
+    "swagger-jsdoc": "^7.0.0-rc.2",
+    "swagger-ui-express": "^4.1.6"
+  }
+}
